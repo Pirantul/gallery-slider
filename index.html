@@ -1,0 +1,23 @@
+ <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <title> Slider </title>
+    </head>
+    <body>
+        <div class="container">
+            <center>
+                <button id="btn_open_modal">Открыть слайдер</button>
+                
+                <div id="modal_slider" class="modal"> 
+                    <span class="close">&times;</span>
+                    <img src = "img/l_1.jpg"  height = "600"  id = "img" > </img> 
+                    <br />
+                    <img src = "img/left.png"   onClick = "left()" /> 
+                    <img src = "img/right.png"  onClick = "right()" />
+                </div>
+            </center>
+        </div>
+    </body>
+    <script src = "modal.js"></script>
+    <script src = "slider.js"></script>
+ </html>
