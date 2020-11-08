@@ -3,38 +3,38 @@ const pathToPicture = './img/';
 let activeSlide = 0;
 const slider1 = document.getElementById('slider-1');
 
+//добавление слайдов
 const addSlider = (activeSlide) => {
   pictures.map((pic, indx) => {
     const slide = document.createElement("img");
-    slide.id = indx;
+    slide.id = 'slider1-' + indx;
     slide.style.display = indx === activeSlide ? "block" : "none"; //видна только 
     slide.style.width = '100%';
     slide.style.height = '100%';
     slide.src = pathToPicture + pic;
-
     slider1.appendChild(slide);
   })
 }
 
 //функция нажатия стрелки > 
 const onClickSlider1Right = () => {
-  document.getElementById(activeSlide).style.display = "none"; //убираем предыдущий слайд
+  document.getElementById('slider1-' + activeSlide).style.display = "none"; //убираем предыдущий слайд
   if (activeSlide === pictures.length - 1) {
     activeSlide = 0;
   } else {
     activeSlide++;
   }
-  document.getElementById(activeSlide).style.display = "block";  
+  document.getElementById('slider1-' + activeSlide).style.display = "block";  
 }
 //функция нажатия стрелки <
 const onClickSlider1Left = () => {
-  document.getElementById(activeSlide).style.display = "none"; //убираем предыдущий слайд
+  document.getElementById('slider1-' + activeSlide).style.display = "none"; //убираем предыдущий слайд
   if (activeSlide === 0) {
     activeSlide = pictures.length - 1;
   } else {
     activeSlide--;
   }
-  document.getElementById(activeSlide).style.display = "block";  
+  document.getElementById('slider1-' + activeSlide).style.display = "block";  
 }
 
 slider1.style.border = "thin dotted red"; //border чтобы видеть границы div
