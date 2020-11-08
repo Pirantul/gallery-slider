@@ -6,18 +6,12 @@
     <body>
         <div class="container">
             <center>
-                <button id="btn_open_modal">Open slider</button>
-                
-                <div id="modal_slider" class="modal"> 
-                    <span class="close">&times;</span>
-                    <img src = "img/l_1.jpg"  height = "600"  id = "img" > </img> 
-                    <br />
-                    <img src = "img/left.png"   onClick = "left()" /> 
-                    <img src = "img/right.png"  onClick = "right()" />
-                </div>
+                <div id='slider-1' class="slider" style="width: 640px; height: 480px"></div>
+                <br />
+                    <img src = "img/left.png"  style="width: 60px;" onclick = "sl1Left()" /> 
+                    <img src = "img/right.png" style="width: 60px;" onclick = "sl1Right()" />
             </center>
         </div>
     </body>
-    <script src = "modal.js"></script>
     <script src = "slider.js"></script>
  </html>
