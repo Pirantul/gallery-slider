@@ -1,4 +1,5 @@
 const pictures2 = ['s_5.jpg', 'l_1.jpg', 'l_7.jpg', 'l_2.jpg', 'l_6.jpg', 'l_4.jpg', 'l_2.jpg', 'l_5.jpg', 's_1.jpg', 'l_3.jpg', 'l_8.jpg'];
+const pathToPicture = "./img/";
 
 let activeSlide2 = 0;
 const slider2 = document.getElementById('slider-2');
@@ -14,6 +15,17 @@ const addSlider2 = (activeSlide2) => {
     slide.src = pathToPicture + pic;
     slider2.appendChild(slide);
   })
+  const buttoLeft = document.createElement("img");
+  buttoLeft.src = "img/left.png";
+  buttoLeft.style.width = '60px';
+  buttoLeft.setAttribute("onclick","onClickSlider2('dec')");
+  slider2.appendChild(buttoLeft);
+
+  const buttoRight = document.createElement("img");
+  buttoRight.src = "img/right.png";
+  buttoRight.style.width = '60px';
+  buttoRight.setAttribute("onclick","onClickSlider2('inc')");
+  slider2.appendChild(buttoRight);
 }
 
 //функция нажатия стрелoк <> 
