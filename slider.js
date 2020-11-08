@@ -16,7 +16,8 @@ const addSlider = (activeSlide) => {
   })
 }
 
-const sl1Right = () => {
+//функция нажатия стрелки > 
+const onClickSlider1Right = () => {
   document.getElementById(activeSlide).style.display = "none"; //убираем предыдущий слайд
   if (activeSlide === pictures.length - 1) {
     activeSlide = 0;
@@ -25,8 +26,8 @@ const sl1Right = () => {
   }
   document.getElementById(activeSlide).style.display = "block";  
 }
-
-const sl1Left = () => {
+//функция нажатия стрелки <
+const onClickSlider1Left = () => {
   document.getElementById(activeSlide).style.display = "none"; //убираем предыдущий слайд
   if (activeSlide === 0) {
     activeSlide = pictures.length - 1;
