@@ -30,14 +30,14 @@ const config = [
     const buttoLeft = document.createElement("img");
     buttoLeft.setAttribute('data-slider-index', i);
     buttoLeft.src = "img/left.png";
-    buttoLeft.style.width = '60px';
+    buttoLeft.style.width = '40px';
     buttoLeft.setAttribute("onclick","onClickSliderBtn(this, 'dec')");
     divSlider.appendChild(buttoLeft);
   
     const buttoRight = document.createElement("img");
     buttoRight.setAttribute('data-slider-index', i);
     buttoRight.src = "img/right.png";
-    buttoRight.style.width = '60px';
+    buttoRight.style.width = '40px';
     buttoRight.setAttribute("onclick","onClickSliderBtn(this, 'inc')");
     divSlider.appendChild(buttoRight);
   }
