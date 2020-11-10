@@ -26,7 +26,7 @@ class Slider {
     }
     this.renderSlide();
   }
-  setStep(step) {
+  set setStep(step) {
     this.step = +step;
     this.renderSlide();
   }
