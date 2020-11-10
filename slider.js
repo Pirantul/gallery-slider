@@ -44,9 +44,9 @@ setInterval(()=>slider1.setStep(Math.floor(Math.random() * Math.floor(7))), 1000
 
 //create a slider2
 const slider2 = new Slider('slider2');
-slider2.setStep(5);
+slider2.setStep = 5;
 setInterval(()=>slider2.setStep(Math.floor(Math.random() * Math.floor(7))), 1500);
 
 //create a slider3
 const slider3 = new Slider('slider3');
-slider3.setStep(3);
+slider3.setStep = 3;
