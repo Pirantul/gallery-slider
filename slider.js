@@ -5,12 +5,12 @@ const onClickSliderBtn = (el, direction) => {
   eval(slider + '.clickBtn(direction)');
 }
 
-//constructor
+let privateStep = Symbol();
 class Slider {
+  [privateStep] = 5;
   shift = 1;                                                //slider shift offset
   pathToPicture = "img/";
   constructor(tagId) {
-    this._step = 0;                                          //number of start slide
     this.tagId = tagId;
   }
   clickBtn(direction) {
@@ -18,23 +18,23 @@ class Slider {
     const imagesCount = slider.childElementCount - 2;       // count of slides, 2 - buttons
     
     if (direction === 'inc') {
-      this._step += 1;
-      if (this._step > imagesCount - 3) this._step = 0;
+      this[privateStep] += 1;
+      if (this[privateStep] > imagesCount - 3) this[privateStep] = 0;
     } else {
-      this._step -= 1;
-      if (this._step < 0) this._step = imagesCount - 3;
+      this[privateStep] -= 1;
+      if (this[privateStep] < 0) this[privateStep] = imagesCount - 3;
     }
     this.renderSlide();
   }
   set step(step) {
-    this._step = +step;
+    this[privateStep] = +step;
     this.renderSlide();
   }
   renderSlide() {
     const lastSlide = document.querySelector(`img[class=${this.tagId}][style*="display: block"]`); 
     lastSlide.style.display = "none";                       //delete last slide
     const slider = document.getElementById(this.tagId);
-    slider.children[this._step].style.display = "block";;    //render new slide
+    slider.children[this[privateStep]].style.display = "block";;    //render new slide
   }
 }
 
