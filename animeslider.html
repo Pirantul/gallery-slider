@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <title> Slider </title>
+    </head>
+    <body>
+        <div class="container">
+            <center>
+                <h3> Animation slider </h3>
+                <div id='sliderwindow' style="  width: 320px;
+                                                height: 240px; 
+                                                margin-bottom: 20px;
+                                                overflow: hidden;                                        
+                    ">
+                    <div id='animeslider' class="slider" style="position: relative;
+                                                                display: flex;
+                                                                height: 240px; 
+                                                                margin-bottom: 20px;
+                    ">
+                        <img class="animeslider" src="img/l_7.jpg" style="width: 320px; height: 240px;">
+                        <img class="animeslider" src="img/l_1.jpg" style="width: 320px; height: 240px;">
+                        <img class="animeslider" src="img/l_2.jpg" style="width: 320px; height: 240px;">
+                        <img class="animeslider" src="img/l_6.jpg" style="width: 320px; height: 240px;">
+                        <img class="animeslider" src="img/l_5.jpg" style="width: 320px; height: 240px;">
+                        <img class="animeslider" src="img/l_3.jpg" style="width: 320px; height: 240px;">
+                        <img class="animeslider" src="img/l_8.jpg" style="width: 320px; height: 240px;">
+                    </div>          
+                </div>
+                <img data-slider="animeslider" src="img/left.png" onclick="onClickSliderBtn(this, 'dec')" style="width: 40px;">
+                <img data-slider="animeslider" src="img/right.png" onclick="onClickSliderBtn(this, 'inc')" style="width: 40px;">
+            </center>
+        </div>
+    </body>
+    <script src = "animeslider.js"></script>
+ </html>
