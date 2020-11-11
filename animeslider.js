@@ -17,6 +17,7 @@ const onClickSliderBtn = (el, direction) => {
       const imagesCount = slider.childElementCount;              
       const shiftSize = parseInt(slider.children[0].style.width, 10);
       let position = slider.style.left ? parseInt(slider.style.left, 10) : 0 ;
+      
       if (direction === 'inc') {
         if (position === -shiftSize * (imagesCount - 1)) {
             slider.style.left = 0;
@@ -31,15 +32,8 @@ const onClickSliderBtn = (el, direction) => {
             slider.style.left = position + shiftSize
         }
       }
-      this.renderSlide();
     }
-    set step(step) {
-      this[privateStep] = +step;
-      this.renderSlide();
-    }
-    renderSlide() {
-      
-    }
+    
   }
   
   //create a slider
