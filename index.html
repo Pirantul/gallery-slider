@@ -1,14 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Different sliders</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<title> Slider </title>
 </head>
+
 <body>
-    <center/>
-        <input type="button" onclick="location.href='pureslider.html';" value="Open pure slider example" style="margin-top: 30vh; display:flex;" />
-        <input type="button" onclick="location.href='animeslider.html';" value="Open animation slider example" style="margin-top: 3vh; display:flex;" />
-    <center/>
+  
+  
+  <div class='slider-container'>
+    <div class='slider-wrapper'>
+	    <div class='slider-slide slide-active' style="background-color: tomato;">slide1</div>
+	    <div class='slider-slide' style="background-color: blue;">slide2</div>
+      <div class='slider-slide' style="background-color: green;">slide3</div>
+    </div>
+    <div class='slider-pagination'></div>  
+    <button class='slider-btn slider-btn-prev'>prev</button>
+	  <button class='slider-btn slider-btn-next'>next</button>
+  </div>
+  
+  
 </body>
+<script src="slider.js"></script>
+
 </html>

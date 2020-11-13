@@ -1,9 +1,46 @@
-.container {
-    margin: 5vh;
+
+.slider-container {
+  width: 100%;
+  height: 70vh;
+  background-color: rgb(151, 170, 206);
+
 }
 
-.slider {
-    margin-top: 1vh;
-    height: 300px;
-    width: 500px;
+.slider-slide {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: xx-large;
+  line-height: 300px;
+  transition: all 1s ease 0s;
+  right: 0;
+  color: whitesmoke;
+}
+
+.slider-wrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 320px;
+  background-color: rgb(19, 50, 134);
+  color: whitesmoke;
+  font-size: large;
+  width: 150px;
+  height: 50px;
+}
+
+.slider-btn-prev {
+  left: 5vh;
+}
+.slider-btn-next {
+  right: 5vh;
+}
+
+.slide-active {
+  display: block;
 }
