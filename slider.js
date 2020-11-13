@@ -33,8 +33,10 @@ class Slider {
     step = (count * this.slides.length + step) % this.slides.length
 
     for (let i = 0; i < this.slides.length; i++) {
-      this.slides[i].classList.remove('slide-active');
       this.slides[i].style.right = this.slides[i].offsetWidth * step - 1;
+    }
+    for (let i = 0; i < this.slideActive.length; i++) {
+      this.slides[i].classList.remove('slide-active');
     }
     this.slides[step].classList.add('slide-active');
   }
