@@ -12,7 +12,7 @@ class Slider {
     this.nextBtn = this.container.querySelector('.slider-btn-next');
     this.prevBtn.addEventListener("click", this.prev.bind(this));
     this.nextBtn.addEventListener("click", this.next.bind(this));
-    this._setDragAttr();
+    if (options.mouseSwap) this._setDragAttr();
   }
   
   get step() {
@@ -97,7 +97,7 @@ class Slider {
 }
 
 //create a slider1
-const slider1 = new Slider('.slider-container', {loop: true});
-
-slider1.step = 2;
+const slider1 = new Slider('.slider-container', {loop: true, mouseSwap: true});
+//set active slide
+slider1.step = 2;  
 
