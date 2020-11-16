@@ -10,7 +10,7 @@
 
 .slider-container {
   width: 100%;
-  height: 250px;
+  height: 200px;
   background-color: rgba(196, 250, 208, 0.995);
   overflow: hidden;
   margin-bottom: 15px;
@@ -19,11 +19,11 @@
 .slider-slide {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 150px;
   flex-shrink: 0;
   text-align: center;
   font-size: xx-large;
-  line-height: 300px;
+  line-height: 150px;
   color: whitesmoke;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -44,7 +44,7 @@
   background-color: rgb(19, 50, 134);
   color: whitesmoke;
   font-size: large;
-  width: 150px;
+  width: 110px;
   height: 40px;
 }
 
