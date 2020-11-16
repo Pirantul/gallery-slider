@@ -3,7 +3,7 @@
   width: 100%;
   height: 70vh;
   background-color: rgba(196, 250, 208, 0.995);
-
+  overflow: hidden;
 }
 
 .slider-slide {
@@ -14,8 +14,6 @@
   text-align: center;
   font-size: xx-large;
   line-height: 300px;
-  transition: all 1s ease 0s;
-  right: 0;
   color: whitesmoke;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -23,8 +21,11 @@
 }
 
 .slider-wrapper {
+  position: relative;
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
+  transition: all 1s ease 0s;
+  right: 0;
 }
 
 .slider-btn {

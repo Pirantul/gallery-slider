@@ -1,14 +1,12 @@
 
 const privateStep = Symbol();
 class Slider {
-  slideMouseStartPosition = 0;
-  slideStartPosition = 0;
-  isMouseDown = false;
   constructor(tagId, options = {}) {
     this.tagId = tagId;
     this.container = document.querySelector(tagId);
     this.options = options;
     this.slides = this.container.getElementsByClassName('slider-slide');
+    this.slidesWrapper = this.container.getElementsByClassName('slider-wrapper');
     this.slideActive = this.container.getElementsByClassName('slide-active');
     this.prevBtn = this.container.querySelector('.slider-btn-prev');
     this.nextBtn = this.container.querySelector('.slider-btn-next');
@@ -34,17 +32,15 @@ class Slider {
     step = this.getCalculatedStep(step);
 
     for (let i = 0; i < this.slides.length; i++) {
-      this.slides[i].style.right = this.slides[i].offsetWidth * step - 1;
-    }
-    for (let i = 0; i < this.slideActive.length; i++) {
       this.slides[i].classList.remove('slide-active');
     }
     this.slides[step].classList.add('slide-active');
+    this.render(step);
   }
 
   getCalculatedStep(step) {
     const count = Math.abs(~~(step / this.slides.length)) + 1
-    return (count * this.slides.length + step) % this.slides.length
+    return (count * this.slides.length + step) % this.slides.length;
   }
   
   next() {
@@ -57,10 +53,7 @@ class Slider {
 
   mouseDown(event) {
     this.slideMouseStartPosition = event.x;
-    this.slideStartPosition = this.slides[this.step].style.right;
-    this.slidePrevStartPosition = this.slides[this.getCalculatedStep(this.step - 1)].style.right;
-    this.slideNextStartPosition = this.slides[this.getCalculatedStep(this.step + 1)].style.right;
-
+    this.slideStartPosition = this.slidesWrapper[0].style.right;
     this.isMouseDown = true;
   }
 
@@ -68,14 +61,10 @@ class Slider {
     const step = this.getCalculatedStep(this.step);
     const elWidth = this.slides[step].offsetWidth;
     this.isMouseDown = false;
-    this.slides[step].style.transition = "all 1s ease 0s";
-    this.slides[this.getCalculatedStep(step - 1)].style.transition = "all 1s ease 0s";
-    this.slides[this.getCalculatedStep(step + 1)].style.transition = "all 1s ease 0s";
+    this.slidesWrapper[0].style.transition = "all 1s ease 0s";
 
-    if ((Math.abs(this.slideMouseStartPosition - event.x)) < parseInt(elWidth) / 5) {
-      this.slides[step].style.right = this.slideStartPosition;
-      this.slides[this.getCalculatedStep(step - 1)].style.right = this.slidePrevStartPosition;
-      this.slides[this.getCalculatedStep(step + 1)].style.right = this.slideNextStartPosition;
+    if ((Math.abs(this.slideMouseStartPosition - event.x)) < parseInt(elWidth) / 3) {
+      this.render(step)
       return;
     } else {
       if (this.slideMouseStartPosition > event.x ) {
@@ -88,13 +77,9 @@ class Slider {
 
   mouseMove(event) {
     if (this.isMouseDown) {
-      const step = this.getCalculatedStep(this.step);
-      this.slides[step].style.transition = "none";
-      this.slides[this.getCalculatedStep(step - 1)].style.transition = "none";
-      this.slides[this.getCalculatedStep(step + 1)].style.transition = "none";
-      this.slides[step].style.right = parseInt(this.slides[step].style.right) - event.movementX + "px";
-      this.slides[this.getCalculatedStep(step - 1)].style.right = parseInt(this.slides[this.getCalculatedStep(step - 1)].style.right) - event.movementX + "px";
-      this.slides[this.getCalculatedStep(step + 1)].style.right = parseInt(this.slides[this.getCalculatedStep(step + 1)].style.right) - event.movementX + "px";
+      const step = this.step;
+      this.slidesWrapper[0].style.transition = "none";
+      this.slidesWrapper[0].style.right = parseInt(this.slidesWrapper[0].style.right) - event.movementX + "px";
     }
   }
 
@@ -105,10 +90,15 @@ class Slider {
       this.slides[i].addEventListener("mousemove", this.mouseMove.bind(this));
     }
   }
+
+  render(step) {
+    console.log(this.slideActive[0].innerText);
+    this.slidesWrapper[0].style.right = this.slides[this.step].offsetWidth * step;
+  }
 }
 
 //create a slider1
 const slider1 = new Slider('.slider-container', {loop: true});
 
-slider1.step = -4
+// slider1.step = 2;
 
