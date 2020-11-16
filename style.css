@@ -1,3 +1,8 @@
+.title {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .label {
   text-align: center;
   margin-bottom: 10px;
