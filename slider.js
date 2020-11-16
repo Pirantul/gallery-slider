@@ -90,11 +90,20 @@ class Slider {
     }
   }
 
+  _mouseOut() {
+    if (this.isMouseDown) {
+      this.isMouseDown = false;
+      this.slidesWrapper[0].style.transition = "all 1s ease 0s";
+      this._render(this.step)
+    }
+  }
+
   _setDragAttr() {
     for (let i = 0; i < this.slides.length; i++) {
       this.slides[i].addEventListener("mousedown", this._mouseDown.bind(this));
       this.slides[i].addEventListener("mouseup", this._mouseUp.bind(this));
       this.slides[i].addEventListener("mousemove", this._mouseMove.bind(this));
+      this.slides[i].addEventListener("mouseout", this._mouseOut.bind(this));
     }
   }
 
