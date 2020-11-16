@@ -39,11 +39,19 @@ class Slider {
   }
   
   next() {
-    this.step = this.step + 1;
+    if (this.options.stepShift) {
+    this.step = this.step + +this.options.stepShift;
+    } else {
+      this.step = this.step + 1;
+    }
   }
   
   prev() {
-    this.step = this.step - 1;
+    if (this.options.stepShift) {
+      this.step = this.step - +this.options.stepShift;
+    } else {
+      this.step = this.step - 1;
+    }
   }
 
   _getCalculatedStep(step) {
@@ -77,7 +85,6 @@ class Slider {
 
   _mouseMove(event) {
     if (this.isMouseDown) {
-      const step = this.step;
       this.slidesWrapper[0].style.transition = "none";
       this.slidesWrapper[0].style.right = parseInt(this.slidesWrapper[0].style.right) - event.movementX + "px";
     }
@@ -92,12 +99,12 @@ class Slider {
   }
 
   _render(step) {
-    this.slidesWrapper[0].style.right = this.slides[this.step].offsetWidth * step;
+    this.slidesWrapper[0].style.right = this.slides[step].offsetWidth * step;
   }
 }
 
 //create a slider1
-const slider1 = new Slider('.slider-container', {loop: true, mouseSwap: true});
+const slider1 = new Slider('.slider-container', {loop: true, mouseSwap: true, stepShift: 2});
 //set active slide
 slider1.step = 2;  
 
