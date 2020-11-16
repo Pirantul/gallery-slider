@@ -1,5 +1,4 @@
 
-const privateStep = Symbol();
 class Slider {
   constructor(tagId, options = {}) {
     this.tagId = tagId;
