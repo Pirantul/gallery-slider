@@ -29,18 +29,13 @@ class Slider {
         return
       }
     }
-    step = this.getCalculatedStep(step);
+    step = this._getCalculatedStep(step);
 
     for (let i = 0; i < this.slides.length; i++) {
       this.slides[i].classList.remove('slide-active');
     }
     this.slides[step].classList.add('slide-active');
-    this.render(step);
-  }
-
-  getCalculatedStep(step) {
-    const count = Math.abs(~~(step / this.slides.length)) + 1
-    return (count * this.slides.length + step) % this.slides.length;
+    this._render(step);
   }
   
   next() {
@@ -51,20 +46,25 @@ class Slider {
     this.step = this.step - 1;
   }
 
-  mouseDown(event) {
+  _getCalculatedStep(step) {
+    const count = Math.abs(~~(step / this.slides.length)) + 1
+    return (count * this.slides.length + step) % this.slides.length;
+  }
+
+  _mouseDown(event) {
     this.slideMouseStartPosition = event.x;
     this.slideStartPosition = this.slidesWrapper[0].style.right;
     this.isMouseDown = true;
   }
 
-  mouseUp(event) {
-    const step = this.getCalculatedStep(this.step);
+  _mouseUp(event) {
+    const step = this._getCalculatedStep(this.step);
     const elWidth = this.slides[step].offsetWidth;
     this.isMouseDown = false;
     this.slidesWrapper[0].style.transition = "all 1s ease 0s";
 
     if ((Math.abs(this.slideMouseStartPosition - event.x)) < parseInt(elWidth) / 3) {
-      this.render(step)
+      this._render(step)
       return;
     } else {
       if (this.slideMouseStartPosition > event.x ) {
@@ -75,7 +75,7 @@ class Slider {
     }
   }
 
-  mouseMove(event) {
+  _mouseMove(event) {
     if (this.isMouseDown) {
       const step = this.step;
       this.slidesWrapper[0].style.transition = "none";
@@ -85,14 +85,13 @@ class Slider {
 
   _setDragAttr() {
     for (let i = 0; i < this.slides.length; i++) {
-      this.slides[i].addEventListener("mousedown", this.mouseDown.bind(this));
-      this.slides[i].addEventListener("mouseup", this.mouseUp.bind(this));
-      this.slides[i].addEventListener("mousemove", this.mouseMove.bind(this));
+      this.slides[i].addEventListener("mousedown", this._mouseDown.bind(this));
+      this.slides[i].addEventListener("mouseup", this._mouseUp.bind(this));
+      this.slides[i].addEventListener("mousemove", this._mouseMove.bind(this));
     }
   }
 
-  render(step) {
-    console.log(this.slideActive[0].innerText);
+  _render(step) {
     this.slidesWrapper[0].style.right = this.slides[this.step].offsetWidth * step;
   }
 }
