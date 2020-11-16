@@ -12,4 +12,5 @@ const slider1 = new Slider('.slider-container', {loop: true, mouseSwap: true, st
 OPTONS:
 loop - bool (loop slider switch)
 mouseSwap - bool (enable mouse slider switch)
-stepShift - num (optional, count of slide shift)  
+stepShift - num (number of slides to switch)  
+switchInterval - num (slide switch time interval, sec)

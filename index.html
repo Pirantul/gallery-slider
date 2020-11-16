@@ -8,14 +8,61 @@
 </head>
 
 <body>
-  
-  
-  <div class='slider-container'>
+  <div class="label">
+    <h3>No loop, no mouse switch, no switchInterval, start slide - 3 </h3>
+    <span>new Slider('.slider1', {})</span>
+  </div>
+  <div class='slider1 slider-container'>
     <div class='slider-wrapper'>
 	    <div class='slider-slide slide-active' style="background-color: tomato;">slide1</div>
 	    <div class='slider-slide' style="background-color: blue;">slide2</div>
 	    <div class='slider-slide' style="background-color: orange;">slide3</div>
       <div class='slider-slide' style="background-color: green;">slide4</div>
+    </div>
+    <div class='slider-pagination'></div>  
+    <button class='slider-btn slider-btn-prev'>prev</button>
+	  <button class='slider-btn slider-btn-next'>next</button>
+  </div>
+  <div class="label">
+    <h3>No loop, mouse switch, no switchInterval, start slide - 2 </h3>
+    <span>new Slider('.slider2', {loop: true, mouseSwap: true})</span>
+  </div>
+  <div class='slider2 slider-container'>
+    <div class='slider-wrapper'>
+	    <div class='slider-slide slide-active' style="background-color: tomato;">slide1</div>
+	    <div class='slider-slide' style="background-color: blue;">slide2</div>
+	    <div class='slider-slide' style="background-color: orange;">slide3</div>
+      <div class='slider-slide' style="background-color: green;">slide4</div>
+    </div>
+    <div class='slider-pagination'></div>  
+    <button class='slider-btn slider-btn-prev'>prev</button>
+	  <button class='slider-btn slider-btn-next'>next</button>
+  </div>
+  <div class="label">
+    <h3>Loop, mouse switch, switchInterval = 2 </h3>
+    <span>new Slider('.slider3', {loop: true, mouseSwap: true, stepShift: 1, switchInterval: 2})</span>
+  </div>
+  <div class='slider3 slider-container'>
+    <div class='slider-wrapper'>
+	    <div class='slider-slide slide-active' style="background-color: tomato;">slide1</div>
+	    <div class='slider-slide' style="background-color: blue;">slide2</div>
+	    <div class='slider-slide' style="background-color: orange;">slide3</div>
+      <div class='slider-slide' style="background-color: green;">slide4</div>
+    </div>
+    <div class='slider-pagination'></div>  
+    <button class='slider-btn slider-btn-prev'>prev</button>
+	  <button class='slider-btn slider-btn-next'>next</button>
+  </div>
+  <div class="label">
+    <h3>Loop, mouse switch, switchInterval = 3, stepShift = 2 </h3>
+    <span>new Slider('.slider4', {loop: true, mouseSwap: true, stepShift: 2, switchInterval: 3})</span>
+  </div>
+  <div class='slider4 slider-container'>
+    <div class='slider-wrapper'>
+	    <div class='slider-slide two-pic slide-active' style="background-color: tomato;">slide1</div>
+	    <div class='slider-slide two-pic' style="background-color: blue;">slide2</div>
+	    <div class='slider-slide two-pic' style="background-color: orange;">slide3</div>
+      <div class='slider-slide two-pic' style="background-color: green;">slide4</div>
     </div>
     <div class='slider-pagination'></div>  
     <button class='slider-btn slider-btn-prev'>prev</button>
