@@ -95,6 +95,13 @@ class Slider {
       this.slidesWrapper[0].style.transition = "all 1s ease 0s";
       this._render(this.step)
     }
+    if (this.autoLoop) this.setSwitchInterval();
+  }
+
+  _mouseOver() {
+    if (this.autoLoop) {
+      clearInterval(this.autoLoop);
+    }
   }
 
   _setDragAttr() {
@@ -103,11 +110,12 @@ class Slider {
       this.slides[i].addEventListener("mouseup", this._mouseUp.bind(this));
       this.slides[i].addEventListener("mousemove", this._mouseMove.bind(this));
       this.slides[i].addEventListener("mouseout", this._mouseOut.bind(this));
+      this.slides[i].addEventListener("mouseover", this._mouseOver.bind(this));
     }
   }
 
   setSwitchInterval() {
-    setInterval(()=>{
+    this.autoLoop = setInterval(()=>{
       this.next()
     }, +this.options.switchInterval * 1000);
   }
