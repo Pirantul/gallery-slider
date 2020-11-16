@@ -100,5 +100,5 @@ class Slider {
 //create a slider1
 const slider1 = new Slider('.slider-container', {loop: true});
 
-// slider1.step = 2;
+slider1.step = 2;
 
