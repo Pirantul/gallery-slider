@@ -104,7 +104,7 @@ class Slider {
 }
 
 //create a slider1
-const slider1 = new Slider('.slider-container', {loop: true, mouseSwap: true, stepShift: 2});
+const slider1 = new Slider('.slider-container', {loop: true, mouseSwap: true, stepShift: 1});
 //set active slide
 slider1.step = 2;  
 
