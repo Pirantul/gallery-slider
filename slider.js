@@ -13,7 +13,7 @@ class Slider {
     this.prevBtn.addEventListener("click", this.prev.bind(this));
     this.nextBtn.addEventListener("click", this.next.bind(this));
     if (options.mouseSwap) this._setDragAttr();
-    if (options.switchTimer) this.setTimer();
+    if (options.switchInterval) this.setSwitchInterval();
   }
   
   get step() {
@@ -107,10 +107,10 @@ class Slider {
     }
   }
 
-  setTimer() {
+  setSwitchInterval() {
     setInterval(()=>{
       this.next()
-    }, +this.options.switchTimer * 1000);
+    }, +this.options.switchInterval * 1000);
   }
 
   _render(step) {
@@ -119,7 +119,7 @@ class Slider {
 }
 
 //create a slider1
-const slider1 = new Slider('.slider-container', {loop: true, mouseSwap: true, stepShift: 1, switchTimer: 2});
+const slider1 = new Slider('.slider-container', {loop: true, mouseSwap: true, stepShift: 1, switchInterval: 2}); 
 //set active slide
 slider1.step = 2;  
 
