@@ -89,7 +89,7 @@ class Slider {
     }
   }
 
-  _mouseOut() {
+  _mouseLeave() {
     if (this.isMouseDown) {
       this.isMouseDown = false;
       this.slidesWrapper[0].style.transition = "all 1s ease 0s";
@@ -98,7 +98,7 @@ class Slider {
     if (this.autoLoop) this.setSwitchInterval();
   }
 
-  _mouseOver() {
+  _mouseEnter() {
     if (this.autoLoop) {
       clearInterval(this.autoLoop);
     }
@@ -109,8 +109,8 @@ class Slider {
       this.slides[i].addEventListener("mousedown", this._mouseDown.bind(this));
       this.slides[i].addEventListener("mouseup", this._mouseUp.bind(this));
       this.slides[i].addEventListener("mousemove", this._mouseMove.bind(this));
-      this.slides[i].addEventListener("mouseout", this._mouseOut.bind(this));
-      this.slides[i].addEventListener("mouseover", this._mouseOver.bind(this));
+      this.slides[i].addEventListener("mouseleave", this._mouseLeave.bind(this));
+      this.slides[i].addEventListener("mouseenter", this._mouseEnter.bind(this));
     }
   }
 

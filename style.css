@@ -9,10 +9,11 @@
 }
 
 .slider-container {
-  width: 100%;
+  max-width: 1000px;
   height: 200px;
   background-color: rgba(196, 250, 208, 0.995);
   overflow: hidden;
+  margin: auto;
   margin-bottom: 15px;
 }
 
@@ -33,13 +34,17 @@
 .slider-wrapper {
   position: relative;
   display: flex;
-  /* overflow: hidden; */
   transition: all 1s ease 0s;
   right: 0;
 }
 
+.btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
 .slider-btn {
-  position: absolute;
+  position: relative;
   margin-top: 5px;
   background-color: rgb(19, 50, 134);
   color: whitesmoke;
