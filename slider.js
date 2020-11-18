@@ -60,7 +60,7 @@ class Slider {
 
   _mouseDown(event) {
     this.slideMouseStartPosition = event.x;
-    this.slideStartPosition = this.slidesWrapper[0].style.right;
+    this.slideStartPosition = this.slidesWrapper[0].style.transition;
     this.isMouseDown = true;
   }
 
@@ -69,8 +69,10 @@ class Slider {
     const elWidth = this.slides[step].offsetWidth;
     this.isMouseDown = false;
     this.slidesWrapper[0].style.transition = "all 1s ease 0s";
+    this.slidesWrapper[0].style.right = '0px';
 
-    if ((Math.abs(this.slideMouseStartPosition - event.x)) < parseInt(elWidth) / 3) {
+
+    if ((Math.abs(this.slideMouseStartPosition - event.x)) < parseInt(elWidth) / 5) {
       this._render(step)
       return;
     } else {
@@ -83,9 +85,11 @@ class Slider {
   }
 
   _mouseMove(event) {
-    if (this.isMouseDown) {
+    if (this.isMouseDown && event.movementX != 0) {
       this.slidesWrapper[0].style.transition = "none";
-      this.slidesWrapper[0].style.right = parseInt(this.slidesWrapper[0].style.right) - event.movementX + "px";
+      this.slidesWrapper[0].style.right = ((parseInt(this.slidesWrapper[0].style.right) ? parseInt(this.slidesWrapper[0].style.right) : 0) - event.movementX) + "px";
+      // this.slidesWrapper[0].style.transform = 'translateX(' + +this.slidesWrapper[0].style.transform.replace(/\D+/g,"") + +event.movementX + 'px)';
+      // console.log( +this.slidesWrapper[0].style.transform.replace(/\D+/g,"") + event.movementX );
     }
   }
 
@@ -121,7 +125,8 @@ class Slider {
   }
 
   _render(step) {
-    this.slidesWrapper[0].style.right = this.slides[step].offsetWidth * step;
+    // this.slidesWrapper[0].style.right = this.slides[step].offsetWidth * step;
+    this.slidesWrapper[0].style.transform = 'translateX(' + -this.slides[step].offsetWidth * step + 'px)';
   }
 }
 
