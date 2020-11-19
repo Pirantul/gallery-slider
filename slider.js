@@ -13,6 +13,7 @@ class Slider {
     this.nextBtn.addEventListener("click", this.next.bind(this));
     if (options.mouseSwap) this._setDragAttr();
     if (options.switchInterval) this.setSwitchInterval();
+    if (options.infinityLoop) this.setCloneSlides();
   }
   
   get step() {
@@ -43,6 +44,15 @@ class Slider {
     } else {
       this.step = this.step + 1;
     }
+
+    if (this.options.infinityLoop && this.step === this.slides.length - 1) {
+
+      setTimeout(()=>{
+        this.slidesWrapper[0].style.transition = "none";
+        this.step = 1;
+        setTimeout(()=>{this.slidesWrapper[0].style.transition = "all 1s ease 0s";},10)
+      }, 1000)
+    }
   }
   
   prev() {
@@ -50,6 +60,13 @@ class Slider {
       this.step = this.step - +this.options.stepShift;
     } else {
       this.step = this.step - 1;
+    }
+    if (this.options.infinityLoop && this.step === 0) {
+      setTimeout(()=>{
+        this.slidesWrapper[0].style.transition = "none";
+        this.step = this.slides.length - 2;
+        setTimeout(()=>{this.slidesWrapper[0].style.transition = "all 1s ease 0s";},10)
+      }, 1000)
     }
   }
 
@@ -86,7 +103,6 @@ class Slider {
     if (this.isMouseDown && event.movementX != 0) {
       this.slidesWrapper[0].style.transition = "none";
       this.slidesWrapper[0].style.transform = 'translateX(' + (parseInt(this.slidesWrapper[0].style.transform.slice(11)) + +event.movementX) + 'px)';
-      console.log( parseInt(this.slidesWrapper[0].style.transform.slice(11)), event.movementX );
     }
   }
 
@@ -124,6 +140,14 @@ class Slider {
   _render(step) {
     // this.slidesWrapper[0].style.right = this.slides[step].offsetWidth * step;
     this.slidesWrapper[0].style.transform = 'translateX(' + -this.slides[step].offsetWidth * step + 'px)';
+    // this.slidesWrapper[0].style.transition = "all 1s ease 0s";
+  }
+
+  setCloneSlides() {
+    const cloneFirstSlide = this.slides[0].cloneNode(true);
+    const cloneLastSlide = this.slides[this.slides.length - 1].cloneNode(true);
+    this.slides[this.slides.length - 1].after(cloneFirstSlide);
+    this.slides[0].before(cloneLastSlide);
   }
 }
 
@@ -132,7 +156,7 @@ const slider1 = new Slider('.slider1', {});
 //set active slide
 slider1.step = 2;  
 
-const slider2 = new Slider('.slider2', {loop: true, mouseSwap: true});
+const slider2 = new Slider('.slider2', {loop: true, mouseSwap: true, infinityLoop: true});
 slider2.step = 1;  
 const slider3 = new Slider('.slider3', {loop: true, mouseSwap: true, stepShift: 1, switchInterval: 2});
 const slider4 = new Slider('.slider4', {loop: true, mouseSwap: true, stepShift: 2, switchInterval: 3});
