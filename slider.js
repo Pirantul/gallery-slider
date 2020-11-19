@@ -69,8 +69,6 @@ class Slider {
     const elWidth = this.slides[step].offsetWidth;
     this.isMouseDown = false;
     this.slidesWrapper[0].style.transition = "all 1s ease 0s";
-    this.slidesWrapper[0].style.right = '0px';
-
 
     if ((Math.abs(this.slideMouseStartPosition - event.x)) < parseInt(elWidth) / 5) {
       this._render(step)
@@ -87,9 +85,8 @@ class Slider {
   _mouseMove(event) {
     if (this.isMouseDown && event.movementX != 0) {
       this.slidesWrapper[0].style.transition = "none";
-      this.slidesWrapper[0].style.right = ((parseInt(this.slidesWrapper[0].style.right) ? parseInt(this.slidesWrapper[0].style.right) : 0) - event.movementX) + "px";
-      // this.slidesWrapper[0].style.transform = 'translateX(' + +this.slidesWrapper[0].style.transform.replace(/\D+/g,"") + +event.movementX + 'px)';
-      // console.log( +this.slidesWrapper[0].style.transform.replace(/\D+/g,"") + event.movementX );
+      this.slidesWrapper[0].style.transform = 'translateX(' + (parseInt(this.slidesWrapper[0].style.transform.slice(11)) + +event.movementX) + 'px)';
+      console.log( parseInt(this.slidesWrapper[0].style.transform.slice(11)), event.movementX );
     }
   }
 
