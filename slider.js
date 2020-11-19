@@ -44,9 +44,8 @@ class Slider {
     } else {
       this.step = this.step + 1;
     }
-
     if (this.options.infinityLoop && this.step === this.slides.length - 1) {
-
+      this.nextBtn.removeEventListener("click", this.next.bind(this));
       setTimeout(()=>{
         this.slidesWrapper[0].style.transition = "none";
         this.step = 1;
