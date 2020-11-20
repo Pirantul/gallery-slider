@@ -45,12 +45,12 @@ class Slider {
       this.step = this.step + 1;
     }
     if (this.options.infinityLoop && this.step === this.slides.length - 1) {
-      this.nextBtn.removeEventListener("click", this.next.bind(this));
-      setTimeout(()=>{
         this.slidesWrapper[0].style.transition = "none";
-        this.step = 1;
-        setTimeout(()=>{this.slidesWrapper[0].style.transition = "all 1s ease 0s";},10)
-      }, 1000)
+        this.step = 0;
+        setTimeout(()=>{
+          this.slidesWrapper[0].style.transition = "all 1s ease 0s";
+          this.step = 1;
+        },1)
     }
   }
   
@@ -61,11 +61,12 @@ class Slider {
       this.step = this.step - 1;
     }
     if (this.options.infinityLoop && this.step === 0) {
-      setTimeout(()=>{
         this.slidesWrapper[0].style.transition = "none";
-        this.step = this.slides.length - 2;
-        setTimeout(()=>{this.slidesWrapper[0].style.transition = "all 1s ease 0s";},10)
-      }, 1000)
+        this.step = this.slides.length - 1;
+        setTimeout(()=>{
+          this.slidesWrapper[0].style.transition = "all 1s ease 0s";
+          this.step = this.slides.length - 2;
+        },1)
     }
   }
 
